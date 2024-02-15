@@ -15,6 +15,9 @@
   <?php if (is_404()) : ?>
     <meta http-equiv="refresh" content=" 3; url=<?php echo esc_url(home_url("")); ?>">
   <?php endif; ?>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
   <?php wp_head(); ?>
 </head>
 

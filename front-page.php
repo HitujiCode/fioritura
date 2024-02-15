@@ -1,5 +1,24 @@
 <?php get_header(); ?>
 
+<div class="loader">
+  <div class="loader__content">
+    <div class="loader__logo">
+      <img src="<?php echo esc_url(get_theme_file_uri('assets/images/common/logo-icon.png')); ?>" alt="">
+    </div>
+    <p class="loader__text">
+      <span>F</span>
+      <span>I</span>
+      <span>O</span>
+      <span>R</span>
+      <span>I</span>
+      <span>T</span>
+      <span>U</span>
+      <span>R</span>
+      <span>A</span>
+    </p>
+  </div>
+</div>
+
 <main class="l-main">
   <div class="p-fv">
     <div class="p-fv__inner l-inner">

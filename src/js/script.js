@@ -461,5 +461,86 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+
+
+  //ローディング
+  const texts = document.querySelectorAll('.loader__text span');
+  const opening=gsap.timeline();
+  opening.fromTo(
+    '.loader__logo',
+    {
+      opacity:0,
+      x:-20,
+      rotate:20,
+    },
+    {
+      opacity:1,
+      x:0,
+      rotate:0,
+      duration:1.4,
+    }
+  )
+  .fromTo(
+    texts,
+    {
+      opacity:0,
+      x:-10,
+    },
+    {
+      x:0,
+      opacity:1,
+      stagger:{
+        each:0.08,
+      }
+    },"-=0.7"
+  )
+  .fromTo(
+    ".loader",
+    {
+      opacity:1,
+    },
+    {
+      opacity:0,
+    },"+=0.2"
+  )
+  .to(
+    ".loader",
+    {
+      display:"none",
+    },
+  );
+  // .fromTo(
+  //   ".p-fv__title img",
+  //   {
+  //     opacity:0,
+  //   },
+  //   {
+  //     opacity:1,
+  //     duration:1,
+  //   },"-=0.8"
+  // )
+  // .fromTo(
+  //   ".p-fv__text",
+  //   {
+  //     opacity:0,
+  //   },
+  //   {
+  //     opacity:1,
+  //     duration:1,
+
+  //   },"-=0.4"
+  // )
+  // .fromTo(
+  //   ".p-fv__swiper",
+  //   {
+  //     opacity:0,
+  //   },
+  //   {
+  //     opacity:1,
+  //     duration:1,
+
+  //   },"-=0.4"
+  // )
 });
 

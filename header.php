@@ -7,11 +7,12 @@
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- ogp -->
-  <meta property="og:title" content="" />
+  <meta property="og:title" content="FIORITURA" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="" />
+  <meta property="og:image" content="<?php echo esc_url(get_theme_file_uri('assets/images/common/ogimage.png')); ?>" />
+  <meta property="og:url" content="https://fioritura-rara.com/" />
   <meta property="og:site_name" content="FIORITURA" />
-  <meta property="og:description" content="" />
+  <meta property="og:description" content="FIORITURAで、それぞれの想いに沿うウェディングフォトや記念写真をー あなたの美しい個性や、尊い愛を永遠のフォトに創り上げます。" />
   <?php if (is_404()) : ?>
     <meta http-equiv="refresh" content=" 3; url=<?php echo esc_url(home_url("")); ?>">
   <?php endif; ?>

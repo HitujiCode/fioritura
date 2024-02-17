@@ -442,7 +442,7 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 1
       }, {
         opacity: 0
-      }, "+=0.2").to(".loader", {
+      }, "+=0.4").to(".loader", {
         display: "none"
       }).fromTo(".p-fv__read", {
         opacity: 0

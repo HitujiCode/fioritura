@@ -513,7 +513,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       opacity:0,
-    },"+=0.2"
+    },"+=0.4"
   )
   .to(
     ".loader",

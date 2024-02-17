@@ -65,6 +65,45 @@ body.is-fixed {
 	opacity: 0;
 }
 
+.js-fadeIn {
+	line-height: 1;
+	overflow: hidden;
+}
+
+.js-fadeIn span {
+	display: inline-block;
+}
+
+.js-fadeIns2 span {
+	display: inline-block;
+}
+
+.js-img {
+	-webkit-clip-path: inset(0% 0% 0% 0%);
+	clip-path: inset(0% 0% 0% 0%);
+	display: block;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+}
+
+.js-maskImg {
+	-webkit-mask-image: linear-gradient(90deg, black 0%,black 50%, transparent 100%);
+	-webkit-mask-image: linear-gradient(90deg, black 0% 50%, transparent 100%);
+	-webkit-mask-size: 200% 100%;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: 200% 0%;
+	mask-image: linear-gradient(90deg, black 0%,black 50%, transparent 100%);
+	mask-image: linear-gradient(90deg, black 0% 50%, transparent 100%);
+	mask-position: 200% 0%;
+	mask-repeat: no-repeat;
+	mask-size: 200% 100%;
+}
+
+.js-maskImg.is-open {
+	animation: maskImg 1s linear forwards;
+}
+
 /* リキッドレイアウト対応 */
 
 html {
@@ -1341,6 +1380,7 @@ select::-ms-expand {
 	position: absolute;
 	top: min(-18px, -5vw);
 	width: 42.6666666667vw;
+	z-index: 3;
 }
 
 .p-list__item:nth-child(even) .p-list__item-img::before {
@@ -2826,6 +2866,7 @@ a[href^="tel:"] {
 	height: 5.3571428571vw;
 	top: -2.7142857143vw;
 	width: 24.2857142857vw;
+	z-index: 3;
 }
 
 .p-list__item:nth-child(even) .p-list__item-img::before {
@@ -3238,6 +3279,20 @@ html {
 
 html {
 	font-size: 4.2666666667vw;
+}
+
+}
+
+@keyframes maskImg {
+
+0% {
+	-webkit-mask-position: 200% 0%;
+	mask-position: 200% 0%;
+}
+
+100% {
+	-webkit-mask-position: 0% 0%;
+	mask-position: 0% 0%;
 }
 
 }

@@ -105,22 +105,6 @@ jQuery(function ($) {
   //   });
   // });
 
-  // Fvスライダー
-  var fvSwiperContainer = document.querySelector(".js-fv-swiper");
-  if (fvSwiperContainer) {
-    var fvSwiper = new Swiper(fvSwiperContainer, {
-      loop: true,
-      effect: "fade",
-      speed: 3000,
-      fadeEffect: {
-        crossFade: true
-      },
-      autoplay: {
-        delay: 2000
-      }
-    });
-  }
-
   // SPのみスライダー
   $(document).ready(function () {
     initializeAboutSwiper();
@@ -410,63 +394,213 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   //ローディング
-  var texts = document.querySelectorAll('.loader__text span');
-  var opening = gsap.timeline();
-  opening.fromTo('.loader__logo', {
-    opacity: 0,
-    x: -20,
-    rotate: 20
-  }, {
-    opacity: 1,
-    x: 0,
-    rotate: 0,
-    duration: 1.4
-  }).fromTo(texts, {
-    opacity: 0,
-    x: -10
-  }, {
-    x: 0,
-    opacity: 1,
-    stagger: {
-      each: 0.08
+  var webStorage = function webStorage() {
+    if (sessionStorage.getItem('access')) {
+      //2回目以降アクセス時の処理
+      $('.loader').hide(); //ローダーを非表示に
+      // Fvスライダー
+      var fvSwiperContainer = document.querySelector(".js-fv-swiper");
+      if (fvSwiperContainer) {
+        var fvSwiper = new Swiper(fvSwiperContainer, {
+          loop: true,
+          effect: "fade",
+          speed: 3000,
+          fadeEffect: {
+            crossFade: true
+          },
+          autoplay: {
+            delay: 2000
+          }
+        });
+      }
+    } else {
+      //初回アクセス時の処理
+      sessionStorage.setItem('access', 0);
+      var texts = document.querySelectorAll('.loader__text span');
+      var opening = gsap.timeline();
+      opening.fromTo('.loader__logo', {
+        opacity: 0,
+        x: -20,
+        rotate: 20,
+        rotateX: 20
+      }, {
+        opacity: 1,
+        x: 0,
+        rotate: 0,
+        rotateX: 0,
+        duration: 1.4
+      }).fromTo(texts, {
+        opacity: 0,
+        x: -10
+      }, {
+        x: 0,
+        opacity: 1,
+        stagger: {
+          each: 0.08
+        }
+      }, "-=0.7").fromTo(".loader", {
+        opacity: 1
+      }, {
+        opacity: 0
+      }, "+=0.2").to(".loader", {
+        display: "none"
+      }).fromTo(".p-fv__read", {
+        opacity: 0
+      }, {
+        opacity: 1,
+        duration: 1.3
+      }, "-=0.4");
+      // .fromTo(
+      //   ".p-fv__text",
+      //   {
+      //     opacity:0,
+      //   },
+      //   {
+      //     opacity:1,
+      //     duration:1,
+
+      //   },"-=0.4"
+      // )
+      // .fromTo(
+      //   ".p-fv__swiper",
+      //   {
+      //     opacity:0,
+      //   },
+      //   {
+      //     opacity:1,
+      //     duration:1,
+
+      //   },"-=0.4"
+      // )
+
+      // Fvスライダー
+      setTimeout(function () {
+        var fvSwiperContainer = document.querySelector(".js-fv-swiper");
+        if (fvSwiperContainer) {
+          var fvSwiper = new Swiper(fvSwiperContainer, {
+            loop: true,
+            effect: "fade",
+            speed: 3000,
+            fadeEffect: {
+              crossFade: true
+            },
+            autoplay: {
+              delay: 2000
+            }
+          });
+        }
+      }, 2000);
     }
-  }, "-=0.7").fromTo(".loader", {
-    opacity: 1
-  }, {
-    opacity: 0
-  }, "+=0.2").to(".loader", {
-    display: "none"
+  };
+  webStorage();
+
+  //アニメーション======================
+
+  //発火タイミング調整
+  var customPosition = $(window).width() < 768 ? 25 : 50;
+  var startPosition = "top+=" + customPosition + " bottom";
+  //サブタイトル
+  var fadeIns = document.querySelectorAll('.js-fadeIn');
+  fadeIns.forEach(function (fadeIn) {
+    gsap.fromTo(fadeIn.querySelector('span'), {
+      yPercent: 100
+    }, {
+      yPercent: 0,
+      duration: 0.8,
+      ease: Power2.easeOut,
+      scrollTrigger: {
+        trigger: fadeIn,
+        start: startPosition
+      }
+    });
+
+    //タイトル
+    var fadeIns2 = gsap.utils.toArray(".js-fadeIns2");
+    fadeIns2.forEach(function (fadeIn) {
+      gsap.fromTo(fadeIn.querySelectorAll('span'), {
+        x: -10,
+        opacity: 0
+      }, {
+        x: 0,
+        opacity: 1,
+        ease: Power3.easeOut,
+        scrollTrigger: {
+          trigger: fadeIn,
+          start: startPosition
+        },
+        stagger: {
+          each: 0.08
+        }
+      });
+    });
   });
-  // .fromTo(
-  //   ".p-fv__title img",
-  //   {
-  //     opacity:0,
-  //   },
-  //   {
-  //     opacity:1,
-  //     duration:1,
-  //   },"-=0.8"
-  // )
-  // .fromTo(
-  //   ".p-fv__text",
-  //   {
-  //     opacity:0,
-  //   },
-  //   {
-  //     opacity:1,
-  //     duration:1,
 
-  //   },"-=0.4"
-  // )
-  // .fromTo(
-  //   ".p-fv__swiper",
-  //   {
-  //     opacity:0,
-  //   },
-  //   {
-  //     opacity:1,
-  //     duration:1,
+  //1つずつ表示
+  var fadeIns3 = document.querySelectorAll('.js-fadeIns3');
+  fadeIns3.forEach(function (fadeIn) {
+    gsap.fromTo(fadeIn.querySelectorAll('.js-fadeIns3-child'), {
+      autoAlpha: 0
+    }, {
+      autoAlpha: 1,
+      duration: 1,
+      ease: Power3.easeOut,
+      scrollTrigger: {
+        trigger: fadeIn,
+        start: startPosition
+      },
+      stagger: 0.1
+    });
+  });
 
-  //   },"-=0.4"
-  // )
+  //scale
+  var imgs = document.querySelectorAll('.js-img');
+  imgs.forEach(function (img) {
+    gsap.fromTo(img.querySelector("img"), {
+      scale: 1.1
+    }, {
+      scale: 1,
+      duration: 1.2,
+      scrollTrigger: {
+        trigger: img,
+        start: startPosition,
+        once: true,
+        toggleClass: {
+          targets: img,
+          className: "is-open"
+        }
+      }
+    });
+  });
+  var fadeIns4 = document.querySelectorAll('.js-fadeIn4');
+  fadeIns4.forEach(function (fadeIn) {
+    gsap.fromTo(fadeIn, {
+      y: 30,
+      opacity: 0
+    }, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: Power2.easeOut,
+      scrollTrigger: {
+        trigger: fadeIn,
+        start: "top bottom"
+      }
+    });
+  });
+
+  //mask
+  var maskImgs = document.querySelectorAll('.js-maskImg');
+  maskImgs.forEach(function (maskImg) {
+    gsap.fromTo(maskImg, {}, {
+      scrollTrigger: {
+        trigger: maskImg,
+        start: startPosition,
+        once: true,
+        toggleClass: {
+          targets: maskImg,
+          className: "is-open"
+        }
+      }
+    });
+  });
 });

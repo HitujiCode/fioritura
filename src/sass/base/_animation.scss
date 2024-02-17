@@ -51,3 +51,51 @@ align-items: center;
 }
 
 
+
+
+//フェードイン
+.js-fadeIn{
+    line-height: 1;
+    overflow: hidden;
+    & span{
+        display: inline-block;
+    }
+}
+
+//1文字ずつ
+.js-fadeIns2{
+    & span{
+        display: inline-block;
+    }
+}
+
+
+//img
+.js-img{
+    overflow: hidden;
+    display: block;
+    clip-path: inset(0% 0% 0% 0%);
+    z-index: 1;
+    position: relative;
+}
+
+
+//mask
+@keyframes maskImg{
+    0%{
+    mask-position: 200% 0%;
+    }
+    100%{
+    mask-position: 0% 0%;
+
+    }
+}
+.js-maskImg{
+    mask-image: linear-gradient(90deg,black 0% 50% , transparent 100% );
+    mask-size: 200% 100%;
+    mask-repeat: no-repeat;
+    mask-position: 200% 0%;
+}
+.js-maskImg.is-open{
+animation:  maskImg 1s linear forwards;
+}

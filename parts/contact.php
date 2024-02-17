@@ -2,7 +2,7 @@
   <div class="p-contact__inner l-inner">
     <div class="p-contact__title">
       <div class="c-section-title">
-        <span class="c-section-title__en">contact</span><h2 class="c-section-title__ja">お問合せ</h2>
+        <span class="c-section-title__en js-fadeIns2"><span>c</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></span><h2 class="c-section-title__ja js-fadeIn"><span>お問合せ</span></h2>
       </div>
     </div>
     <div class="p-contact__content">

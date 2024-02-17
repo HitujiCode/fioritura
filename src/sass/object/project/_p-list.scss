@@ -63,10 +63,13 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+  z-index: 3;
+
   @include mq("md") {
     width: calc(340 / 1400 * 100vw);
     height: calc(75 / 1400 * 100vw);
     top: calc(-38 / 1400 * 100vw);
+    z-index: 3;
   }
 }
 

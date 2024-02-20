@@ -403,7 +403,7 @@
                         class="c-section-title__en js-fadeIns2"><span>i</span><span>n</span><span>s</span><span>t</span><span>a</span><span>g</span><span>r</span><span>a</span><span>m</span></span>
                     <h2 class="c-section-title__ja js-fadeIn"><span>インスタグラム</span></h2>
                 </div>
-                <div class="p-instagram__content js-maskImg">
+                <div class="p-instagram__content">
                     <?php echo do_shortcode('[insta-gallery id="0"]') ?>
                 </div>
             </div>
